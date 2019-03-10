@@ -8,15 +8,15 @@ public class ChatLauncher {
     public static void main(String[] args) throws InterruptedException {
 
         Configuration config = new Configuration();
-        config.setHostname("localhost");
+        config.setHostname("192.168.0.102");
         config.setPort(3000);
 
         final SocketIOServer server = new SocketIOServer(config);
-        server.addEventListener("chatevent", ChatObject.class, new DataListener<ChatObject>() {
+        server.addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
             @Override
             public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
                 // broadcast messages to all clients
-                server.getBroadcastOperations().sendEvent("chatevent", data);
+                server.getBroadcastOperations().sendEvent("message", data);
             }
         });
 
