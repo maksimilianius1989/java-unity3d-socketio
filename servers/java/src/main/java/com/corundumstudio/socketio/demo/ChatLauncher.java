@@ -8,8 +8,8 @@ public class ChatLauncher {
     public static void main(String[] args) throws InterruptedException {
 
         Configuration config = new Configuration();
-        config.setHostname("192.168.0.102");
-        config.setPort(3000);
+        config.setHostname("192.168.0.103");
+        config.setPort(3001);
 
         final SocketIOServer server = new SocketIOServer(config);
         server.addEventListener("message", ChatObject.class, new DataListener<ChatObject>() {
